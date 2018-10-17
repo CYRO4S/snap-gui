@@ -67,4 +67,28 @@ Public Class SSHProcessor
         RaiseEvent Ecco("Disconnected.")
         Return True
     End Function
+
+    ' execute command and get return
+    Public Async Function ExecuteAsync(command As String) As Task(Of String)
+        If session Is Nothing Then
+            Return Nothing
+            Exit Function
+        End If
+
+        If session.IsConnected = False Then
+            Return Nothing
+            Exit Function
+        End If
+
+        Dim cmd As SshCommand = session.CreateCommand(command)
+        Dim result As String
+        Try
+            result = Await Task.Run(AddressOf cmd.Execute)
+        Catch ex As Exception
+            result = ex.Message
+        End Try
+
+        Return result
+    End Function
+
 End Class

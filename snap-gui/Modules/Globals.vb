@@ -1,6 +1,4 @@
-﻿Imports Renci.SshNet
-
-Module Globals
+﻿Module Globals
 
 
 
