@@ -30,17 +30,41 @@ Public Class SSHProcessor
     End Sub
 
     ' establish ssh connection
-    Public Sub Connect()
-        If session Is Nothing Then Exit Sub
-
+    Public Function Connect() As Boolean
         session = New SshClient(Hostname, Port, Username, Password)
         RaiseEvent Ecco("Connecting... ")
+
         Try
             session.Connect()
-            RaiseEvent Ecco("Connected.")
         Catch ex As Exception
             RaiseEvent Ecco($"Failed: {ex.Message}")
+            Return False
+            Exit Function
         End Try
-    End Sub
 
+        RaiseEvent Ecco("Connected.")
+        Return True
+    End Function
+
+
+    ' disconnect from remote computer
+    Public Function Disconnect() As Boolean
+        If session Is Nothing Then
+            Return False
+            Exit Function
+        End If
+
+        RaiseEvent Ecco("Disconnecting...")
+
+        Try
+            session.Disconnect()
+        Catch ex As Exception
+            RaiseEvent Ecco($"Failed: {ex.Message}")
+            Return False
+            Exit Function
+        End Try
+
+        RaiseEvent Ecco("Disconnected.")
+        Return True
+    End Function
 End Class

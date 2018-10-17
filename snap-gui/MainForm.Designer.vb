@@ -123,7 +123,6 @@ Partial Class MainForm
         Me.txtHostname.Name = "txtHostname"
         Me.txtHostname.Size = New System.Drawing.Size(257, 32)
         Me.txtHostname.TabIndex = 1
-        Me.txtHostname.Text = "39.107.74.136"
         '
         'btnClearLog
         '
@@ -203,7 +202,6 @@ Partial Class MainForm
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(257, 32)
         Me.txtPassword.TabIndex = 4
-        Me.txtPassword.Text = "L0mbax++"
         Me.txtPassword.UseSystemPasswordChar = True
         '
         'Label5
@@ -219,6 +217,7 @@ Partial Class MainForm
         'btnDisconnect
         '
         Me.btnDisconnect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnDisconnect.Enabled = False
         Me.btnDisconnect.Location = New System.Drawing.Point(79, 406)
         Me.btnDisconnect.Name = "btnDisconnect"
         Me.btnDisconnect.Size = New System.Drawing.Size(100, 40)
