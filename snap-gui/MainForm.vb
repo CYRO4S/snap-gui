@@ -66,9 +66,14 @@
         linux_kernel.Text = Await conn.ExecuteAsync("uname -r")
         linux_architecture.Text = Await conn.ExecuteAsync("uname -m")
         linux_hostname.Text = Await conn.ExecuteAsync("uname -n")
+
+        cpu.Text = Await conn.ExecuteAsync("echo $( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo | sed 's/^[\t]*//;s/[ \t]*$//' )")
+        cpu_cores.Text = Await conn.ExecuteAsync("echo $( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )")
+        cpu_frequency.Text = Await conn.ExecuteAsync("echo $( awk -F: '/cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo | sed 's/^[ \t]*//;s/[ \r]*$//' )")
+
+        ram_total.Text = Await conn.ExecuteAsync("cat /proc/meminfo | grep ""MemTotal"" | grep -o ""[0-9]*""")
+        ram_free.Text = Await conn.ExecuteAsync("cat /proc/meminfo | grep ""MemFree"" | grep -o ""[0-9]*""")
     End Sub
-
-
 
 
 End Class
