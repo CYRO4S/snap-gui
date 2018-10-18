@@ -71,12 +71,22 @@ Partial Class MainForm
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.pageInstalled = New System.Windows.Forms.TabPage()
+        Me.lstInstalled = New System.Windows.Forms.ListView()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.pageStore = New System.Windows.Forms.TabPage()
+        Me.headName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.headVersion = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.headRev = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.headTracking = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.headPublisher = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TabControl1.SuspendLayout()
         Me.pageConnection.SuspendLayout()
         Me.pageInformation.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.pageInstalled.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -84,12 +94,13 @@ Partial Class MainForm
         Me.TabControl1.Controls.Add(Me.pageConnection)
         Me.TabControl1.Controls.Add(Me.pageInformation)
         Me.TabControl1.Controls.Add(Me.pageInstalled)
+        Me.TabControl1.Controls.Add(Me.pageStore)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(863, 500)
+        Me.TabControl1.Size = New System.Drawing.Size(882, 503)
         Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.TabControl1.TabIndex = 0
         '
@@ -111,11 +122,11 @@ Partial Class MainForm
         Me.pageConnection.Controls.Add(Me.txtHostname)
         Me.pageConnection.Controls.Add(Me.Label1)
         Me.pageConnection.Font = New System.Drawing.Font("Product Sans", 9.0!)
-        Me.pageConnection.Location = New System.Drawing.Point(4, 25)
+        Me.pageConnection.Location = New System.Drawing.Point(4, 28)
         Me.pageConnection.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.pageConnection.Name = "pageConnection"
         Me.pageConnection.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.pageConnection.Size = New System.Drawing.Size(855, 471)
+        Me.pageConnection.Size = New System.Drawing.Size(874, 471)
         Me.pageConnection.TabIndex = 0
         Me.pageConnection.Text = "Connection"
         Me.pageConnection.UseVisualStyleBackColor = True
@@ -123,7 +134,7 @@ Partial Class MainForm
         'btnSaveLog
         '
         Me.btnSaveLog.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnSaveLog.Location = New System.Drawing.Point(291, 406)
+        Me.btnSaveLog.Location = New System.Drawing.Point(291, 409)
         Me.btnSaveLog.Name = "btnSaveLog"
         Me.btnSaveLog.Size = New System.Drawing.Size(100, 40)
         Me.btnSaveLog.TabIndex = 9
@@ -144,7 +155,7 @@ Partial Class MainForm
         Me.chkShowPassword.AutoSize = True
         Me.chkShowPassword.Location = New System.Drawing.Point(134, 238)
         Me.chkShowPassword.Name = "chkShowPassword"
-        Me.chkShowPassword.Size = New System.Drawing.Size(110, 20)
+        Me.chkShowPassword.Size = New System.Drawing.Size(133, 23)
         Me.chkShowPassword.TabIndex = 5
         Me.chkShowPassword.Text = "Show password"
         Me.chkShowPassword.UseVisualStyleBackColor = True
@@ -153,7 +164,7 @@ Partial Class MainForm
         '
         Me.btnDisconnect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnDisconnect.Enabled = False
-        Me.btnDisconnect.Location = New System.Drawing.Point(79, 406)
+        Me.btnDisconnect.Location = New System.Drawing.Point(79, 409)
         Me.btnDisconnect.Name = "btnDisconnect"
         Me.btnDisconnect.Size = New System.Drawing.Size(100, 40)
         Me.btnDisconnect.TabIndex = 7
@@ -170,7 +181,7 @@ Partial Class MainForm
         Me.txtConnectionLog.Multiline = True
         Me.txtConnectionLog.Name = "txtConnectionLog"
         Me.txtConnectionLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtConnectionLog.Size = New System.Drawing.Size(422, 360)
+        Me.txtConnectionLog.Size = New System.Drawing.Size(441, 363)
         Me.txtConnectionLog.TabIndex = 10
         '
         'Label5
@@ -179,7 +190,7 @@ Partial Class MainForm
         Me.Label5.Font = New System.Drawing.Font("Product Sans", 12.0!)
         Me.Label5.Location = New System.Drawing.Point(26, 203)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(76, 20)
+        Me.Label5.Size = New System.Drawing.Size(95, 25)
         Me.Label5.TabIndex = 3
         Me.Label5.Text = "Password"
         '
@@ -189,7 +200,7 @@ Partial Class MainForm
         Me.Label4.Font = New System.Drawing.Font("Product Sans", 12.0!)
         Me.Label4.Location = New System.Drawing.Point(26, 165)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(81, 20)
+        Me.Label4.Size = New System.Drawing.Size(101, 25)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "Username"
         '
@@ -199,7 +210,7 @@ Partial Class MainForm
         Me.Label3.Font = New System.Drawing.Font("Product Sans", 12.0!)
         Me.Label3.Location = New System.Drawing.Point(26, 127)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(71, 20)
+        Me.Label3.Size = New System.Drawing.Size(88, 25)
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "SSH Port"
         '
@@ -209,14 +220,14 @@ Partial Class MainForm
         Me.Label2.Font = New System.Drawing.Font("Product Sans", 12.0!)
         Me.Label2.Location = New System.Drawing.Point(26, 89)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(82, 20)
+        Me.Label2.Size = New System.Drawing.Size(102, 25)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Hostname"
         '
         'btnClearLog
         '
         Me.btnClearLog.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnClearLog.Location = New System.Drawing.Point(185, 406)
+        Me.btnClearLog.Location = New System.Drawing.Point(185, 409)
         Me.btnClearLog.Name = "btnClearLog"
         Me.btnClearLog.Size = New System.Drawing.Size(100, 40)
         Me.btnClearLog.TabIndex = 8
@@ -228,7 +239,7 @@ Partial Class MainForm
         Me.txtPassword.Font = New System.Drawing.Font("Product Sans", 12.0!)
         Me.txtPassword.Location = New System.Drawing.Point(134, 200)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(257, 27)
+        Me.txtPassword.Size = New System.Drawing.Size(257, 32)
         Me.txtPassword.TabIndex = 4
         Me.txtPassword.UseSystemPasswordChar = True
         '
@@ -237,7 +248,7 @@ Partial Class MainForm
         Me.txtUsername.Font = New System.Drawing.Font("Product Sans", 12.0!)
         Me.txtUsername.Location = New System.Drawing.Point(134, 162)
         Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(257, 27)
+        Me.txtUsername.Size = New System.Drawing.Size(257, 32)
         Me.txtUsername.TabIndex = 3
         Me.txtUsername.Text = "root"
         '
@@ -246,7 +257,7 @@ Partial Class MainForm
         Me.txtPort.Font = New System.Drawing.Font("Product Sans", 12.0!)
         Me.txtPort.Location = New System.Drawing.Point(134, 124)
         Me.txtPort.Name = "txtPort"
-        Me.txtPort.Size = New System.Drawing.Size(257, 27)
+        Me.txtPort.Size = New System.Drawing.Size(257, 32)
         Me.txtPort.TabIndex = 2
         Me.txtPort.Text = "22"
         '
@@ -255,7 +266,7 @@ Partial Class MainForm
         Me.txtHostname.Font = New System.Drawing.Font("Product Sans", 12.0!)
         Me.txtHostname.Location = New System.Drawing.Point(134, 86)
         Me.txtHostname.Name = "txtHostname"
-        Me.txtHostname.Size = New System.Drawing.Size(257, 27)
+        Me.txtHostname.Size = New System.Drawing.Size(257, 32)
         Me.txtHostname.TabIndex = 1
         '
         'Label1
@@ -264,7 +275,7 @@ Partial Class MainForm
         Me.Label1.Font = New System.Drawing.Font("Product Sans", 16.0!)
         Me.Label1.Location = New System.Drawing.Point(25, 25)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(229, 28)
+        Me.Label1.Size = New System.Drawing.Size(281, 34)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Setup SSH Connection"
         '
@@ -274,11 +285,11 @@ Partial Class MainForm
         Me.pageInformation.Controls.Add(Me.GroupBox2)
         Me.pageInformation.Controls.Add(Me.GroupBox1)
         Me.pageInformation.Controls.Add(Me.Label6)
-        Me.pageInformation.Location = New System.Drawing.Point(4, 25)
+        Me.pageInformation.Location = New System.Drawing.Point(4, 28)
         Me.pageInformation.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.pageInformation.Name = "pageInformation"
         Me.pageInformation.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.pageInformation.Size = New System.Drawing.Size(855, 471)
+        Me.pageInformation.Size = New System.Drawing.Size(874, 471)
         Me.pageInformation.TabIndex = 1
         Me.pageInformation.Text = "Information"
         Me.pageInformation.UseVisualStyleBackColor = True
@@ -295,9 +306,9 @@ Partial Class MainForm
         Me.GroupBox3.Controls.Add(Me.Label22)
         Me.GroupBox3.Controls.Add(Me.Label23)
         Me.GroupBox3.Controls.Add(Me.Label24)
-        Me.GroupBox3.Location = New System.Drawing.Point(363, 90)
+        Me.GroupBox3.Location = New System.Drawing.Point(345, 90)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(457, 301)
+        Me.GroupBox3.Size = New System.Drawing.Size(498, 301)
         Me.GroupBox3.TabIndex = 10
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Hardware"
@@ -306,9 +317,9 @@ Partial Class MainForm
         '
         Me.ram_free.AutoSize = True
         Me.ram_free.Font = New System.Drawing.Font("Product Sans", 10.0!)
-        Me.ram_free.Location = New System.Drawing.Point(122, 144)
+        Me.ram_free.Location = New System.Drawing.Point(142, 144)
         Me.ram_free.Name = "ram_free"
-        Me.ram_free.Size = New System.Drawing.Size(66, 18)
+        Me.ram_free.Size = New System.Drawing.Size(82, 21)
         Me.ram_free.TabIndex = 12
         Me.ram_free.Text = "Loading..."
         '
@@ -316,9 +327,9 @@ Partial Class MainForm
         '
         Me.ram_total.AutoSize = True
         Me.ram_total.Font = New System.Drawing.Font("Product Sans", 10.0!)
-        Me.ram_total.Location = New System.Drawing.Point(122, 114)
+        Me.ram_total.Location = New System.Drawing.Point(142, 114)
         Me.ram_total.Name = "ram_total"
-        Me.ram_total.Size = New System.Drawing.Size(66, 18)
+        Me.ram_total.Size = New System.Drawing.Size(82, 21)
         Me.ram_total.TabIndex = 11
         Me.ram_total.Text = "Loading..."
         '
@@ -328,7 +339,7 @@ Partial Class MainForm
         Me.Label17.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label17.Location = New System.Drawing.Point(12, 144)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(68, 18)
+        Me.Label17.Size = New System.Drawing.Size(81, 21)
         Me.Label17.TabIndex = 10
         Me.Label17.Text = "RAM Free"
         '
@@ -338,7 +349,7 @@ Partial Class MainForm
         Me.Label18.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label18.Location = New System.Drawing.Point(12, 114)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(69, 18)
+        Me.Label18.Size = New System.Drawing.Size(84, 21)
         Me.Label18.TabIndex = 9
         Me.Label18.Text = "RAM Total"
         '
@@ -346,9 +357,9 @@ Partial Class MainForm
         '
         Me.cpu_frequency.AutoSize = True
         Me.cpu_frequency.Font = New System.Drawing.Font("Product Sans", 10.0!)
-        Me.cpu_frequency.Location = New System.Drawing.Point(122, 84)
+        Me.cpu_frequency.Location = New System.Drawing.Point(142, 84)
         Me.cpu_frequency.Name = "cpu_frequency"
-        Me.cpu_frequency.Size = New System.Drawing.Size(66, 18)
+        Me.cpu_frequency.Size = New System.Drawing.Size(82, 21)
         Me.cpu_frequency.TabIndex = 8
         Me.cpu_frequency.Text = "Loading..."
         '
@@ -356,9 +367,9 @@ Partial Class MainForm
         '
         Me.cpu_cores.AutoSize = True
         Me.cpu_cores.Font = New System.Drawing.Font("Product Sans", 10.0!)
-        Me.cpu_cores.Location = New System.Drawing.Point(122, 54)
+        Me.cpu_cores.Location = New System.Drawing.Point(142, 54)
         Me.cpu_cores.Name = "cpu_cores"
-        Me.cpu_cores.Size = New System.Drawing.Size(66, 18)
+        Me.cpu_cores.Size = New System.Drawing.Size(82, 21)
         Me.cpu_cores.TabIndex = 7
         Me.cpu_cores.Text = "Loading..."
         '
@@ -366,9 +377,9 @@ Partial Class MainForm
         '
         Me.cpu.AutoSize = True
         Me.cpu.Font = New System.Drawing.Font("Product Sans", 10.0!)
-        Me.cpu.Location = New System.Drawing.Point(122, 24)
+        Me.cpu.Location = New System.Drawing.Point(142, 24)
         Me.cpu.Name = "cpu"
-        Me.cpu.Size = New System.Drawing.Size(66, 18)
+        Me.cpu.Size = New System.Drawing.Size(82, 21)
         Me.cpu.TabIndex = 6
         Me.cpu.Text = "Loading..."
         '
@@ -378,7 +389,7 @@ Partial Class MainForm
         Me.Label22.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label22.Location = New System.Drawing.Point(12, 84)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(104, 18)
+        Me.Label22.Size = New System.Drawing.Size(124, 21)
         Me.Label22.TabIndex = 5
         Me.Label22.Text = "CPU Frequency"
         '
@@ -388,7 +399,7 @@ Partial Class MainForm
         Me.Label23.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label23.Location = New System.Drawing.Point(12, 54)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(75, 18)
+        Me.Label23.Size = New System.Drawing.Size(91, 21)
         Me.Label23.TabIndex = 4
         Me.Label23.Text = "CPU Cores"
         '
@@ -398,7 +409,7 @@ Partial Class MainForm
         Me.Label24.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label24.Location = New System.Drawing.Point(12, 24)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(35, 18)
+        Me.Label24.Size = New System.Drawing.Size(43, 21)
         Me.Label24.TabIndex = 3
         Me.Label24.Text = "CPU"
         '
@@ -416,7 +427,7 @@ Partial Class MainForm
         Me.GroupBox2.Controls.Add(Me.Label15)
         Me.GroupBox2.Location = New System.Drawing.Point(31, 213)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(326, 178)
+        Me.GroupBox2.Size = New System.Drawing.Size(308, 178)
         Me.GroupBox2.TabIndex = 9
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Linux"
@@ -427,7 +438,7 @@ Partial Class MainForm
         Me.linux_hostname.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.linux_hostname.Location = New System.Drawing.Point(122, 144)
         Me.linux_hostname.Name = "linux_hostname"
-        Me.linux_hostname.Size = New System.Drawing.Size(66, 18)
+        Me.linux_hostname.Size = New System.Drawing.Size(82, 21)
         Me.linux_hostname.TabIndex = 12
         Me.linux_hostname.Text = "Loading..."
         '
@@ -437,7 +448,7 @@ Partial Class MainForm
         Me.linux_architecture.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.linux_architecture.Location = New System.Drawing.Point(122, 114)
         Me.linux_architecture.Name = "linux_architecture"
-        Me.linux_architecture.Size = New System.Drawing.Size(66, 18)
+        Me.linux_architecture.Size = New System.Drawing.Size(82, 21)
         Me.linux_architecture.TabIndex = 11
         Me.linux_architecture.Text = "Loading..."
         '
@@ -447,7 +458,7 @@ Partial Class MainForm
         Me.Label10.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label10.Location = New System.Drawing.Point(12, 144)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(72, 18)
+        Me.Label10.Size = New System.Drawing.Size(87, 21)
         Me.Label10.TabIndex = 10
         Me.Label10.Text = "Hostname"
         '
@@ -457,7 +468,7 @@ Partial Class MainForm
         Me.Label16.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label16.Location = New System.Drawing.Point(12, 114)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(86, 18)
+        Me.Label16.Size = New System.Drawing.Size(101, 21)
         Me.Label16.TabIndex = 9
         Me.Label16.Text = "Architecture"
         '
@@ -467,7 +478,7 @@ Partial Class MainForm
         Me.linux_kernel.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.linux_kernel.Location = New System.Drawing.Point(122, 84)
         Me.linux_kernel.Name = "linux_kernel"
-        Me.linux_kernel.Size = New System.Drawing.Size(66, 18)
+        Me.linux_kernel.Size = New System.Drawing.Size(82, 21)
         Me.linux_kernel.TabIndex = 8
         Me.linux_kernel.Text = "Loading..."
         '
@@ -477,7 +488,7 @@ Partial Class MainForm
         Me.linux_verision.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.linux_verision.Location = New System.Drawing.Point(122, 54)
         Me.linux_verision.Name = "linux_verision"
-        Me.linux_verision.Size = New System.Drawing.Size(66, 18)
+        Me.linux_verision.Size = New System.Drawing.Size(82, 21)
         Me.linux_verision.TabIndex = 7
         Me.linux_verision.Text = "Loading..."
         '
@@ -487,7 +498,7 @@ Partial Class MainForm
         Me.linux_distribution.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.linux_distribution.Location = New System.Drawing.Point(122, 24)
         Me.linux_distribution.Name = "linux_distribution"
-        Me.linux_distribution.Size = New System.Drawing.Size(66, 18)
+        Me.linux_distribution.Size = New System.Drawing.Size(82, 21)
         Me.linux_distribution.TabIndex = 6
         Me.linux_distribution.Text = "Loading..."
         '
@@ -497,7 +508,7 @@ Partial Class MainForm
         Me.Label13.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label13.Location = New System.Drawing.Point(12, 84)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(49, 18)
+        Me.Label13.Size = New System.Drawing.Size(57, 21)
         Me.Label13.TabIndex = 5
         Me.Label13.Text = "Kernel"
         '
@@ -507,7 +518,7 @@ Partial Class MainForm
         Me.Label14.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label14.Location = New System.Drawing.Point(12, 54)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(54, 18)
+        Me.Label14.Size = New System.Drawing.Size(66, 21)
         Me.Label14.TabIndex = 4
         Me.Label14.Text = "Version"
         '
@@ -517,7 +528,7 @@ Partial Class MainForm
         Me.Label15.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label15.Location = New System.Drawing.Point(12, 24)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(80, 18)
+        Me.Label15.Size = New System.Drawing.Size(98, 21)
         Me.Label15.TabIndex = 3
         Me.Label15.Text = "Distribution"
         '
@@ -531,7 +542,7 @@ Partial Class MainForm
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Location = New System.Drawing.Point(31, 90)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(326, 117)
+        Me.GroupBox1.Size = New System.Drawing.Size(308, 117)
         Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Snap"
@@ -542,7 +553,7 @@ Partial Class MainForm
         Me.snap_account.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.snap_account.Location = New System.Drawing.Point(122, 84)
         Me.snap_account.Name = "snap_account"
-        Me.snap_account.Size = New System.Drawing.Size(66, 18)
+        Me.snap_account.Size = New System.Drawing.Size(82, 21)
         Me.snap_account.TabIndex = 8
         Me.snap_account.Text = "Loading..."
         '
@@ -552,7 +563,7 @@ Partial Class MainForm
         Me.snap_series.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.snap_series.Location = New System.Drawing.Point(122, 54)
         Me.snap_series.Name = "snap_series"
-        Me.snap_series.Size = New System.Drawing.Size(66, 18)
+        Me.snap_series.Size = New System.Drawing.Size(82, 21)
         Me.snap_series.TabIndex = 7
         Me.snap_series.Text = "Loading..."
         '
@@ -562,7 +573,7 @@ Partial Class MainForm
         Me.snap_version.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.snap_version.Location = New System.Drawing.Point(122, 24)
         Me.snap_version.Name = "snap_version"
-        Me.snap_version.Size = New System.Drawing.Size(66, 18)
+        Me.snap_version.Size = New System.Drawing.Size(82, 21)
         Me.snap_version.TabIndex = 6
         Me.snap_version.Text = "Loading..."
         '
@@ -572,7 +583,7 @@ Partial Class MainForm
         Me.Label9.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label9.Location = New System.Drawing.Point(12, 84)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(60, 18)
+        Me.Label9.Size = New System.Drawing.Size(73, 21)
         Me.Label9.TabIndex = 5
         Me.Label9.Text = "Account"
         '
@@ -582,7 +593,7 @@ Partial Class MainForm
         Me.Label8.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label8.Location = New System.Drawing.Point(12, 54)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(46, 18)
+        Me.Label8.Size = New System.Drawing.Size(55, 21)
         Me.Label8.TabIndex = 4
         Me.Label8.Text = "Series"
         '
@@ -592,7 +603,7 @@ Partial Class MainForm
         Me.Label7.Font = New System.Drawing.Font("Product Sans", 10.0!)
         Me.Label7.Location = New System.Drawing.Point(12, 24)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(54, 18)
+        Me.Label7.Size = New System.Drawing.Size(66, 21)
         Me.Label7.TabIndex = 3
         Me.Label7.Text = "Version"
         '
@@ -602,24 +613,101 @@ Partial Class MainForm
         Me.Label6.Font = New System.Drawing.Font("Product Sans", 16.0!)
         Me.Label6.Location = New System.Drawing.Point(25, 25)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(200, 28)
+        Me.Label6.Size = New System.Drawing.Size(245, 34)
         Me.Label6.TabIndex = 1
         Me.Label6.Text = "System Information"
         '
         'pageInstalled
         '
-        Me.pageInstalled.Location = New System.Drawing.Point(4, 25)
+        Me.pageInstalled.Controls.Add(Me.Button1)
+        Me.pageInstalled.Controls.Add(Me.Label11)
+        Me.pageInstalled.Controls.Add(Me.lstInstalled)
+        Me.pageInstalled.Location = New System.Drawing.Point(4, 28)
         Me.pageInstalled.Name = "pageInstalled"
-        Me.pageInstalled.Size = New System.Drawing.Size(855, 471)
+        Me.pageInstalled.Size = New System.Drawing.Size(874, 471)
         Me.pageInstalled.TabIndex = 2
         Me.pageInstalled.Text = "Installed"
         Me.pageInstalled.UseVisualStyleBackColor = True
         '
+        'lstInstalled
+        '
+        Me.lstInstalled.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lstInstalled.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.headName, Me.headVersion, Me.headRev, Me.headTracking, Me.headPublisher})
+        Me.lstInstalled.FullRowSelect = True
+        Me.lstInstalled.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
+        Me.lstInstalled.Location = New System.Drawing.Point(31, 90)
+        Me.lstInstalled.MultiSelect = False
+        Me.lstInstalled.Name = "lstInstalled"
+        Me.lstInstalled.Size = New System.Drawing.Size(811, 354)
+        Me.lstInstalled.TabIndex = 0
+        Me.lstInstalled.UseCompatibleStateImageBehavior = False
+        Me.lstInstalled.View = System.Windows.Forms.View.Details
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Product Sans", 16.0!)
+        Me.Label11.Location = New System.Drawing.Point(25, 25)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(268, 34)
+        Me.Label11.TabIndex = 1
+        Me.Label11.Text = "List of Snaps installed"
+        '
+        'Button1
+        '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.Location = New System.Drawing.Point(715, 26)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(127, 40)
+        Me.Button1.TabIndex = 12
+        Me.Button1.Text = "Show in Store"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'pageStore
+        '
+        Me.pageStore.Location = New System.Drawing.Point(4, 28)
+        Me.pageStore.Name = "pageStore"
+        Me.pageStore.Size = New System.Drawing.Size(874, 471)
+        Me.pageStore.TabIndex = 3
+        Me.pageStore.Text = "Store"
+        Me.pageStore.UseVisualStyleBackColor = True
+        '
+        'headName
+        '
+        Me.headName.Text = "Name"
+        Me.headName.Width = 300
+        '
+        'headVersion
+        '
+        Me.headVersion.Text = "Version"
+        Me.headVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.headVersion.Width = 100
+        '
+        'headRev
+        '
+        Me.headRev.Text = "Rev"
+        Me.headRev.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.headRev.Width = 100
+        '
+        'headTracking
+        '
+        Me.headTracking.Text = "Tracking"
+        Me.headTracking.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.headTracking.Width = 100
+        '
+        'headPublisher
+        '
+        Me.headPublisher.Text = "Publisher"
+        Me.headPublisher.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.headPublisher.Width = 200
+        '
         'MainForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 19.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(863, 500)
+        Me.ClientSize = New System.Drawing.Size(882, 503)
         Me.Controls.Add(Me.TabControl1)
         Me.Font = New System.Drawing.Font("Product Sans", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -637,6 +725,8 @@ Partial Class MainForm
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.pageInstalled.ResumeLayout(False)
+        Me.pageInstalled.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -690,4 +780,13 @@ Partial Class MainForm
     Friend WithEvents Label22 As Label
     Friend WithEvents Label23 As Label
     Friend WithEvents Label24 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents lstInstalled As ListView
+    Friend WithEvents Button1 As Button
+    Friend WithEvents pageStore As TabPage
+    Friend WithEvents headName As ColumnHeader
+    Friend WithEvents headVersion As ColumnHeader
+    Friend WithEvents headRev As ColumnHeader
+    Friend WithEvents headTracking As ColumnHeader
+    Friend WithEvents headPublisher As ColumnHeader
 End Class
